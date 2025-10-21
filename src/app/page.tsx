@@ -21,7 +21,7 @@ export default function Home() {
     },
     {
       name: "YouTube Music",
-      imgSrc: "https://services.linkfire.com/logo_youtube_onlight.svg",
+      imgSrc: "https://upload.wikimedia.org/wikipedia/commons/0/04/YouTube_Music_logo.svg",
       musicLink:
         "https://music.youtube.com/channel/UCVY1s-SKQrfCnZPWXAYvm-A?si=BnkdaM_gfc-23w36",
     },
