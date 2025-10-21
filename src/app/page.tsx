@@ -49,7 +49,7 @@ export default function Home() {
 
         {/* 內容區域 */}
         <div className="relative z-10 flex flex-col items-center gap-8">
-          <div className="border rounded-xl overflow-hidden flex items-center justify-center">
+          <div className="border  overflow-hidden flex items-center justify-center">
             <Image
               src="/albumCover.jpeg"
               alt="Solar Eclipse"
@@ -59,7 +59,7 @@ export default function Home() {
           </div>
           <Card className="w-full min-w-[350px]">
             <CardHeader>
-              <CardTitle>Solar Eclipse</CardTitle>
+              <CardTitle>日全蝕 Solar Eclipse</CardTitle>
               <CardDescription>by White Frequency</CardDescription>
             </CardHeader>
 
@@ -91,11 +91,12 @@ export default function Home() {
             </CardContent>
           </Card>
           <div className="w-full space-y-4 flex flex-col items-center">
-            <div className="relative w-[240px] h-[80px] overflow-hidden border rounded-md border-gray-800">
+            <div className="relative w-full flex items-center justify-center">
               <Image
-                src="/logo1.jpg"
+                src="/logo.png"
                 alt="logoImg"
-                fill
+                width={100}
+                height={100}
                 className="object-cover object-center"
                 style={{ objectPosition: "center center" }}
               />
