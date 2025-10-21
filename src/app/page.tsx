@@ -1,103 +1,113 @@
 import Image from "next/image";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { PlayIcon } from "@phosphor-icons/react/dist/ssr";
+import { Separator } from "@radix-ui/react-separator";
+import Link from "next/link";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const MusicList = [
+    {
+      name: "Spotify",
+      imgSrc: "https://services.linkfire.com/logo_spotify_onlight.svg",
+      musicLink:
+        "https://open.spotify.com/artist/4tREKMNVSLyiI0K6IhgHVc?si=de1dP930T6e_9uVG2s_IYw",
+    },
+    {
+      name: "YouTube Music",
+      imgSrc: "https://services.linkfire.com/logo_youtube_onlight.svg",
+      musicLink:
+        "https://music.youtube.com/channel/UCVY1s-SKQrfCnZPWXAYvm-A?si=BnkdaM_gfc-23w36",
+    },
+    {
+      name: "Apple Music",
+      imgSrc: "https://services.linkfire.com/logo_applemusic_onlight.svg",
+      musicLink:
+        "https://music.apple.com/tw/artist/%E7%99%BD%E9%A0%BB%E7%8E%87/1428600777",
+    },
+    {
+      name: "kkbox",
+      imgSrc: "https://www.kkbox.com/about/img/logo/logo.svg",
+      musicLink: "https://kkbox.fm/op0DiX",
+    },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+  return (
+    <div
+      className="bg-black/40 w-full flex justify-center bg-cover bg-center"
+      style={{ backgroundImage: "url(/albumCover.jpeg)" }}
+    >
+      <div className=" relative w-full  flex flex-col items-center min-h-screen gap-8 p-8 bg-cover bg-center bg-no-repeat">
+        {/* 灰色濾鏡覆蓋層 */}
+        <div className="absolute inset-0 bg-black/30 backdrop-blur-md"></div>
+
+        {/* 內容區域 */}
+        <div className="relative z-10 flex flex-col items-center gap-8">
+          <div className="border rounded-xl overflow-hidden flex items-center justify-center">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/albumCover.jpeg"
+              alt="Solar Eclipse"
+              width={150}
+              height={150}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
+          <Card className="w-full min-w-[350px]">
+            <CardHeader>
+              <CardTitle>Solar Eclipse</CardTitle>
+              <CardDescription>by White Frequency</CardDescription>
+            </CardHeader>
+
+            <CardContent>
+              {MusicList.map((musicItem) => (
+                <div key={musicItem.name}>
+                  <div className="flex gap-2 items-center w-full justify-between">
+                    <div className="relative h-10 w-auto min-w-[125px]">
+                      <Image
+                        src={musicItem.imgSrc}
+                        alt={musicItem.name}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <Link
+                      href={musicItem.musicLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button variant="secondary" className="cursor-pointer">
+                        <PlayIcon size={32} weight="fill" />
+                      </Button>
+                    </Link>
+                  </div>
+                  <Separator className="my-4" />
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+          <div className="w-full space-y-4 flex flex-col items-center">
+            <div className="relative w-[240px] h-[80px] overflow-hidden border rounded-md border-gray-800">
+              <Image
+                src="/logo1.jpg"
+                alt="logoImg"
+                fill
+                className="object-cover object-center"
+                style={{ objectPosition: "center center" }}
+              />
+            </div>
+            <p className="text-gray-50 text-sm">
+              © 2025 White Frequency. All rights reserved.
+            </p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
     </div>
   );
 }
