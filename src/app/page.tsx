@@ -93,7 +93,7 @@ export default function Home() {
           <div className="w-full space-y-4 flex flex-col items-center">
             <div className="relative w-full flex items-center justify-center">
               <Image
-                src="/logo.png"
+                src="/LOGO.png"
                 alt="logoImg"
                 width={100}
                 height={100}
