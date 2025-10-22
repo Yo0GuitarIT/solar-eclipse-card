@@ -98,7 +98,7 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Button variant="secondary" className="cursor-pointer">
+                      <Button variant="outline" className="cursor-pointer">
                         <PlayIcon size={32} weight="fill" />
                       </Button>
                     </Link>
