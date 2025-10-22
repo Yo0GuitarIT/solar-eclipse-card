@@ -46,6 +46,11 @@ export default function Home() {
         "https://streetvoice.com/whitefrequency2016/songs/album/97324127/",
     },
     {
+      name: "Line Music",
+      imgSrc: "https://cdn.worldvectorlogo.com/logos/line-music.svg",
+      musicLink: "https://music-tw.line.me/album/7787184",
+    },
+    {
       name: "WangYiYun",
       imgSrc: "https://services.linkfire.com/logo_netease_onlight.svg",
       musicLink: "https://music.163.com/#/album?id=287789645",
