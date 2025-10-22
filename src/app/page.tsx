@@ -8,7 +8,8 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { PlayIcon } from "@phosphor-icons/react/dist/ssr";
-import { Separator } from "@radix-ui/react-separator";
+import { Separator } from "@/components/ui/separator";
+
 import Link from "next/link";
 
 export default function Home() {
@@ -81,8 +82,8 @@ export default function Home() {
             </CardHeader>
 
             <CardContent>
-              {MusicList.map((musicItem) => (
-                <div key={musicItem.name}>
+              {MusicList.map((musicItem, index) => (
+                <div key={musicItem.name + index}>
                   <div className="flex gap-2 items-center w-full justify-between">
                     <div className="relative h-10 w-auto min-w-[125px]">
                       <Image
@@ -102,7 +103,9 @@ export default function Home() {
                       </Button>
                     </Link>
                   </div>
-                  <Separator className="my-4" />
+                  {index < MusicList.length - 1 && (
+                    <Separator className="my-4" />
+                  )}
                 </div>
               ))}
             </CardContent>
