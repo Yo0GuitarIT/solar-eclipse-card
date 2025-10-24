@@ -15,6 +15,7 @@ import { Tilt } from "@/components/ui/tilt";
 import { MUSIC_LIST } from "@/constants";
 
 import { PlayIcon } from "@phosphor-icons/react/dist/ssr";
+import Smoke from "@/components/ui/shadcn-io/smoke";
 
 const coverImageUrl = "/albumCover.jpeg";
 
@@ -26,7 +27,19 @@ export default function Home() {
     >
       <div className=" relative w-full  flex flex-col items-center min-h-screen gap-8 p-8 bg-cover bg-center bg-no-repeat">
         {/* 灰色濾鏡覆蓋層 */}
-        <div className="absolute inset-0 bg-black/30 backdrop-blur-md"></div>
+        <div className="absolute inset-0 bg-black/20 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 w-full h-full  overflow-hidden">
+          <Smoke
+            density={10}
+            color="#cccccc"
+            opacity={0.5}
+            enableRotation={true}
+            enableWind={true}
+            windStrength={[0.02, 0.01, 0.01]}
+            enableTurbulence={true}
+            turbulenceStrength={[0.02, 0.02, 0.01]}
+          />
+        </div>
 
         {/* 內容區域 */}
         <div className="relative z-10 flex flex-col items-center gap-4">
