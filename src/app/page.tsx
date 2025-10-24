@@ -9,7 +9,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { PlayIcon } from "@phosphor-icons/react/dist/ssr";
 import { Separator } from "@/components/ui/separator";
-import { BorderTrail } from "../../components/motion-primitives/border-trail";
 import Link from "next/link";
 import { TextEffect } from "../../components/motion-primitives/text-effect";
 import { Tilt } from "../../components/motion-primitives/tilt";
@@ -73,16 +72,12 @@ export default function Home() {
         {/* 內容區域 */}
         <div className="relative z-10 flex flex-col items-center gap-4">
           <Tilt rotationFactor={15} isRevese>
-            <div className="relative h-[150px] w-[150px]  overflow-hidden flex items-center justify-center">
+            <div className="border border-zinc-200  overflow-hidden flex items-center justify-center">
               <Image
                 src={coverImageUrl}
                 alt="Solar Eclipse"
                 width={150}
                 height={150}
-              />
-              <BorderTrail
-                className="bg-linear-to-l from-zinc-800 via-red-600 to-zinc-800"
-                size={120}
               />
             </div>
           </Tilt>
