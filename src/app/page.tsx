@@ -30,9 +30,9 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/20 backdrop-blur-sm"></div>
         <div className="absolute inset-0 w-full h-full  overflow-hidden">
           <Smoke
-            density={10}
+            density={15}
             color="#cccccc"
-            opacity={0.5}
+            opacity={0.9}
             enableRotation={true}
             enableWind={true}
             windStrength={[0.02, 0.01, 0.01]}
