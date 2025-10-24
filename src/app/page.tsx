@@ -9,8 +9,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { PlayIcon } from "@phosphor-icons/react/dist/ssr";
 import { Separator } from "@/components/ui/separator";
-
+import { BorderTrail } from "../../components/motion-primitives/border-trail";
 import Link from "next/link";
+import { TextEffect } from "../../components/motion-primitives/text-effect";
+import { Tilt } from "../../components/motion-primitives/tilt";
 
 const coverImageUrl = "/albumCover.jpeg";
 
@@ -70,53 +72,73 @@ export default function Home() {
 
         {/* 內容區域 */}
         <div className="relative z-10 flex flex-col items-center gap-4">
-          <div className="border overflow-hidden flex items-center justify-center">
-            <Image
-              src={coverImageUrl}
-              alt="Solar Eclipse"
-              width={150}
-              height={150}
-            />
-          </div>
-          <Card className="w-full min-w-[350px]">
-            <CardHeader>
-              <CardTitle className="text-center">
-                日全蝕 Solar Eclipse
-              </CardTitle>
-              <CardDescription className="text-center">
-                White Frequency
-              </CardDescription>
-            </CardHeader>
+          <Tilt rotationFactor={15} isRevese>
+            <div className="relative h-[150px] w-[150px]  overflow-hidden flex items-center justify-center">
+              <Image
+                src={coverImageUrl}
+                alt="Solar Eclipse"
+                width={150}
+                height={150}
+              />
+              <BorderTrail
+                className="bg-linear-to-l from-zinc-800 via-red-600 to-zinc-800"
+                size={120}
+              />
+            </div>
+          </Tilt>
+          <Tilt rotationFactor={5} isRevese>
+            <Card className="w-full min-w-[350px]">
+              <CardHeader>
+                <CardTitle className="text-center">
+                  <TextEffect
+                    preset="fade-in-blur"
+                    speedReveal={1.1}
+                    speedSegment={0.3}
+                  >
+                    日全蝕 Solar Eclipse
+                  </TextEffect>
+                </CardTitle>
+                <CardDescription className="text-center">
+                  <TextEffect
+                    preset="fade-in-blur"
+                    speedReveal={1.1}
+                    speedSegment={0.3}
+                  >
+                    White Frequency
+                  </TextEffect>
+                </CardDescription>
+              </CardHeader>
 
-            <CardContent>
-              {MusicList.map((musicItem, index) => (
-                <div key={musicItem.name + index}>
-                  <div className="flex gap-2 items-center w-full justify-between">
-                    <div className="relative h-10 w-auto min-w-[125px]">
-                      <Image
-                        src={musicItem.imgSrc}
-                        alt={musicItem.name}
-                        fill
-                        className="object-contain"
-                      />
+              <CardContent>
+                {MusicList.map((musicItem, index) => (
+                  <div key={musicItem.name + index}>
+                    <div className="flex gap-2 items-center w-full justify-between">
+                      <div className="relative h-10 w-auto min-w-[125px]">
+                        <Image
+                          src={musicItem.imgSrc}
+                          alt={musicItem.name}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                      <Link
+                        href={musicItem.musicLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button variant="outline" className="cursor-pointer">
+                          <PlayIcon size={32} weight="fill" />
+                        </Button>
+                      </Link>
                     </div>
-                    <Link
-                      href={musicItem.musicLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button variant="outline" className="cursor-pointer">
-                        <PlayIcon size={32} weight="fill" />
-                      </Button>
-                    </Link>
+                    {index < MusicList.length - 1 && (
+                      <Separator className="my-4" />
+                    )}
                   </div>
-                  {index < MusicList.length - 1 && (
-                    <Separator className="my-4" />
-                  )}
-                </div>
-              ))}
-            </CardContent>
-          </Card>
+                ))}
+              </CardContent>
+            </Card>
+          </Tilt>
           <div className="w-full space-y-4 flex flex-col items-center">
             <div className="relative w-full flex items-center justify-center">
               <Image
