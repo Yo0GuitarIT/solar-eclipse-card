@@ -1,4 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -6,58 +9,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { PlayIcon } from "@phosphor-icons/react/dist/ssr";
 import { Separator } from "@/components/ui/separator";
-import Link from "next/link";
-import { TextEffect } from "../../components/motion-primitives/text-effect";
-import { Tilt } from "../../components/motion-primitives/tilt";
+import { TextEffect } from "@/components/ui/text-effect";
+import { Tilt } from "@/components/ui/tilt";
+import { MUSIC_LIST } from "@/constants";
+
+import { PlayIcon } from "@phosphor-icons/react/dist/ssr";
 
 const coverImageUrl = "/albumCover.jpeg";
-
-const MusicList = [
-  {
-    name: "Spotify",
-    imgSrc: "https://services.linkfire.com/logo_spotify_onlight.svg",
-    musicLink:
-      "https://open.spotify.com/album/3b0WhPepXHm3K1YT40cN1y?si=Bi-djGF-RKydYv4Btk8X7Q",
-  },
-  {
-    name: "Apple Music",
-    imgSrc: "https://services.linkfire.com/logo_applemusic_onlight.svg",
-    musicLink:
-      "https://music.apple.com/tw/album/%E6%97%A5%E5%85%A8%E8%9D%95-ep/1847322570",
-  },
-  {
-    name: "KKBox",
-    imgSrc: "https://www.kkbox.com/about/img/logo/logo.svg",
-    musicLink: "https://kkbox.fm/KaJzRh",
-  },
-  {
-    name: "YouTube Music",
-    imgSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/0/04/YouTube_Music_logo.svg",
-    musicLink:
-      "https://music.youtube.com/playlist?list=OLAK5uy_lONO9pGj2MsU-8W8sBvZZ_-aCY8vOAk40&si=VBjAjH9-q4ErGXuD",
-  },
-  {
-    name: "StreetVoice",
-    imgSrc:
-      "https://streetvoice.com/pages/mobile-app/static/images/logo-sv-b-s.svg",
-    musicLink:
-      "https://streetvoice.com/whitefrequency2016/songs/album/97324127/",
-  },
-  {
-    name: "Line Music",
-    imgSrc: "https://cdn.worldvectorlogo.com/logos/line-music.svg",
-    musicLink: "https://music-tw.line.me/album/7787184",
-  },
-  {
-    name: "WangYiYun",
-    imgSrc: "https://services.linkfire.com/logo_netease_onlight.svg",
-    musicLink: "https://music.163.com/#/album?id=287789645",
-  },
-];
 
 export default function Home() {
   return (
@@ -81,59 +40,57 @@ export default function Home() {
               />
             </div>
           </Tilt>
-          <Tilt rotationFactor={5} isRevese>
-            <Card className="w-full min-w-[350px]">
-              <CardHeader>
-                <CardTitle className="text-center">
-                  <TextEffect
-                    preset="fade-in-blur"
-                    speedReveal={1.1}
-                    speedSegment={0.3}
-                  >
-                    日全蝕 Solar Eclipse
-                  </TextEffect>
-                </CardTitle>
-                <CardDescription className="text-center">
-                  <TextEffect
-                    preset="fade-in-blur"
-                    speedReveal={1.1}
-                    speedSegment={0.3}
-                  >
-                    White Frequency
-                  </TextEffect>
-                </CardDescription>
-              </CardHeader>
+          <Card className="w-full min-w-[350px]">
+            <CardHeader>
+              <CardTitle className="text-center">
+                <TextEffect
+                  preset="fade-in-blur"
+                  speedReveal={1.1}
+                  speedSegment={0.3}
+                >
+                  日全蝕 Solar Eclipse
+                </TextEffect>
+              </CardTitle>
+              <CardDescription className="text-center">
+                <TextEffect
+                  preset="fade-in-blur"
+                  speedReveal={1.1}
+                  speedSegment={0.3}
+                >
+                  White Frequency
+                </TextEffect>
+              </CardDescription>
+            </CardHeader>
 
-              <CardContent>
-                {MusicList.map((musicItem, index) => (
-                  <div key={musicItem.name + index}>
-                    <div className="flex gap-2 items-center w-full justify-between">
-                      <div className="relative h-10 w-auto min-w-[125px]">
-                        <Image
-                          src={musicItem.imgSrc}
-                          alt={musicItem.name}
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                      <Link
-                        href={musicItem.musicLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Button variant="outline" className="cursor-pointer">
-                          <PlayIcon size={32} weight="fill" />
-                        </Button>
-                      </Link>
+            <CardContent>
+              {MUSIC_LIST.map((musicItem, index) => (
+                <div key={musicItem.name + index}>
+                  <div className="flex gap-2 items-center w-full justify-between">
+                    <div className="relative h-10 w-auto min-w-[125px]">
+                      <Image
+                        src={musicItem.imgSrc}
+                        alt={musicItem.name}
+                        fill
+                        className="object-contain"
+                      />
                     </div>
-                    {index < MusicList.length - 1 && (
-                      <Separator className="my-4" />
-                    )}
+                    <Link
+                      href={musicItem.musicLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button variant="outline" className="cursor-pointer">
+                        <PlayIcon size={32} weight="fill" />
+                      </Button>
+                    </Link>
                   </div>
-                ))}
-              </CardContent>
-            </Card>
-          </Tilt>
+                  {index < MUSIC_LIST.length - 1 && (
+                    <Separator className="my-4" />
+                  )}
+                </div>
+              ))}
+            </CardContent>
+          </Card>
           <div className="w-full space-y-4 flex flex-col items-center">
             <div className="relative w-full flex items-center justify-center">
               <Image
